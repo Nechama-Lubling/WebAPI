@@ -14,6 +14,12 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
+
+
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+
+
 //builder.Services.AddScoped<IManager214877003Context, Manager214877003Context>();
 builder.Services.AddDbContext<Manager214877003Context>(o => o.UseSqlServer("Server=srv2\\pupils;Database=Manager_214877003;Trusted_Connection=True;TrustServerCertificate=True"));
 

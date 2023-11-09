@@ -29,6 +29,10 @@ namespace Repository
             return await _managerContext.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
         }
 
+        public async Task<IEnumerable<Product>> getProducts()
+        {
+            return await _managerContext.Products.ToListAsync();
+        }
 
 
 
