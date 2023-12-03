@@ -11,9 +11,6 @@ namespace Repository
     public class ProductRepository : IProductRepository
     {
 
-
-        //אם נוסיף פונקציות צריך לעדכן את הממשק
-
         private readonly Manager214877003Context _managerContext;
 
 
@@ -29,13 +26,22 @@ namespace Repository
             return await _managerContext.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
         }
 
-        public async Task<IEnumerable<Product>> getProducts()
+        public async Task<IEnumerable<Product>> getProducts(int position, int skip, string? desc, int? minPrice,
+            int? maxPrice, int?[] categoryIds)
         {
-            return await _managerContext.Products.ToListAsync();
+
+            var query = _managerContext.Products.Where(p =>
+            (desc == null ? (true) : (p.ProductDescription.Contains(desc)))
+            && ((minPrice == null) ? (true) : (p.Price >= minPrice))
+            && ((maxPrice == null) ? (true) : (p.Price <= maxPrice))
+          && ((categoryIds.Length == 0) ? (true) : (categoryIds.Contains(p.CategoryId))))
+                .OrderBy(p => p.Price).Include(i=>i.Category);
+ 
+            List<Product> products = await query.ToListAsync();
+            return products;
+
+
         }
-
-
-
 
     }
 }

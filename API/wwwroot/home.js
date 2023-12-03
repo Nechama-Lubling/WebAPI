@@ -3,10 +3,14 @@
 const register = async () => {
     try {
         var userName = document.getElementById("userName").value
+        var email = document.getElementById("email").value
         var password = document.getElementById("password").value
         var firstName = document.getElementById("firstName").value
         var lastName = document.getElementById("lastName").value
-        var User = { userName, password, firstName, lastName }
+        var User = { email, firstName, lastName, password, userName }
+
+
+
         const res = await fetch('api/users', {
             method: 'POST',
             headers: {
@@ -17,8 +21,15 @@ const register = async () => {
         });
 
         const dataPost = await res.json();
-        alert(dataPost.userName+" your regisre:)")
+        console.log(dataPost)
+        if (dataPost.userName == undefined) {
+            alert("נסה שוב, אחד או יותר מהפרטים שהזנת שגויים")
+        }
+        else
+            alert(dataPost.userName+" your regisre:)")
     }
+
+
     catch (er) {
        alert(er )
     }
@@ -28,21 +39,14 @@ const register = async () => {
 
 const checkLength = () => {
     var userName = document.getElementById("userName").value
-    if (userName.length > 10) {
+    if (userName.length > 30) {
         alert("to long")
     }
 } 
 
 var users;
-
-
-
-const checkPasswordLevel=(password)=>{
-
-
-
-
-}
+//const checkPasswordLevel=(password)=>{
+//}
 
 
 const checkPassword = async () => {

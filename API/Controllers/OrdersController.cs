@@ -1,4 +1,6 @@
-﻿using Entities;
+﻿using AutoMapper;
+using DTO;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
@@ -13,50 +15,40 @@ namespace API.Controllers
 
 
         IOrderService _orderService;
-
-        public OrdersController(IOrderService orderService)
+        IMapper _mapper;
+        public OrdersController(IOrderService orderService, IMapper mapper)
         {
             _orderService = orderService;
+            _mapper = mapper;
         }   
         // GET: api/<OrdersController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //[HttpGet]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
         // GET api/<OrdersController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST api/<OrdersController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Order order)
+        public async Task<ActionResult> Post([FromBody] OrderDTO order)
         {
-            Order newOrder = await _orderService.addOrder(order);
-            if (newOrder == null)
+
+            Order newOrder = _mapper.Map<OrderDTO, Order>(order);
+            OrderReturnDTO newOrderReturn = _mapper.Map<Order, OrderReturnDTO>(await _orderService.addOrder(newOrder));
+            if (newOrderReturn == null)
             {
                 return NoContent();
             }
-            return CreatedAtAction(nameof(Get), new { id = newOrder.OrderId }, newOrder);
 
+           return Ok(newOrderReturn);
 
-
-        }
-
-        // PUT api/<OrdersController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<OrdersController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

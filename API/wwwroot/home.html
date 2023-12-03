@@ -11,34 +11,40 @@
 
 
 
+    <form>
+
+        <div dir="rtl">
+            <h3>הרשמה</h3>
+            <br />
+
+            <label>שם משתמש</label>
+            <br />
+            <input id="userName" onchange="checkLength()" />
+            <br />
+
+            <label> מייל</label>
+            <br />
+            <input type="email" id="email" required />
+            <br />
 
 
-    <div dir="rtl">
-        <h3>הרשמה</h3>
-        <br />
+            <label>סיסמא</label>  <br />
+            <input type="password" onchange="checkPassword()" id="password" />
+            <br />
+            <br />
+            <meter max="4" id="password-strength-meter"></meter>
+            <h8 id="password-strength-text"></h8>
+            <br />
+            <label>שם פרטי</label>  <br />
+            <input id="firstName" />
+            <br />
 
-        <label>שם משתמש</label>
-        <br />
-        <input id="userName" onchange="checkLength()" />
-        <br />
-
-        <label>סיסמא</label>  <br />
-        <input onchange="checkPassword()" id="password" />
-        <br />
-        <br />
-        <meter max="4" id="password-strength-meter"></meter>
-        <h8 id="password-strength-text"></h8>
-        <br />
-        <label>שם פרטי</label>  <br />
-        <input id="firstName" />
-        <br />
-
-        <label>שם משפחה</label><br />
-        <input id="lastName" />
-        <br />
-        <button id="buttonRegister" onclick="register()"> הירשם</button>
-    </div>
-
+            <label>שם משפחה</label><br />
+            <input id="lastName" />
+            <br />
+            <button type="submit"id="buttonRegister" onclick="register()"> הירשם</button>
+        </div>
+    </form>
     <br />
 
 
@@ -56,10 +62,14 @@
         <br />
 
         <label>סיסמא</label>  <br />
-        <input id="passwordLogin"  />
+        <input type="password" id="passwordLogin"  />
         <br />
         <button id="login" onclick="login()" > התחבר</button>
     </div>
+
+    <a href="Products.html">Products.html</a>
+
+
 
 </body>
 

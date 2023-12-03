@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace Repository;
 
@@ -11,9 +13,13 @@ public partial class Manager214877003Context : DbContext, IManager214877003Conte
     {
     }
 
-    public Manager214877003Context(DbContextOptions<Manager214877003Context> options)
-        : base(options)
+    IConfiguration _configuration;
+
+    public Manager214877003Context(DbContextOptions<Manager214877003Context> options, IConfiguration configuration)
+    : base(options)
     {
+
+        _configuration = configuration;
     }
 
     public virtual DbSet<Category> Categories { get; set; }
@@ -23,12 +29,12 @@ public partial class Manager214877003Context : DbContext, IManager214877003Conte
     public virtual DbSet<OrderItem> OrderItems { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
-
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Rating> Ratings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=srv2\\pupils;Database=Manager_214877003;Trusted_Connection=True;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer(_configuration.GetConnectionString("School"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -43,6 +49,10 @@ public partial class Manager214877003Context : DbContext, IManager214877003Conte
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("CATEGORY_NAME");
+            entity.Property(e => e.Img)
+                .HasMaxLength(100)
+                .IsFixedLength()
+                .HasColumnName("IMG");
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -91,6 +101,10 @@ public partial class Manager214877003Context : DbContext, IManager214877003Conte
 
             entity.Property(e => e.ProductId).HasColumnName("PRODUCT_ID");
             entity.Property(e => e.CategoryId).HasColumnName("CATEGORY_ID");
+            entity.Property(e => e.Img)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("IMG");
             entity.Property(e => e.Price)
                 .HasColumnType("money")
                 .HasColumnName("PRICE");
@@ -136,9 +150,39 @@ public partial class Manager214877003Context : DbContext, IManager214877003Conte
                 .IsUnicode(false)
                 .HasColumnName("USER_NAME");
         });
+        modelBuilder.Entity<Rating>(entity =>
+        {
+            entity.ToTable("RATING");
 
+            entity.Property(e => e.RatingId).HasColumnName("RATING_ID");
+
+            entity.Property(e => e.Host)
+                .HasColumnName("HOST")
+                .HasMaxLength(50);
+
+            entity.Property(e => e.Method)
+                .HasColumnName("METHOD")
+                .HasMaxLength(10)
+                .IsFixedLength();
+
+            entity.Property(e => e.Path)
+                .HasColumnName("PATH")
+                .HasMaxLength(50);
+
+            entity.Property(e => e.RecordDate)
+             .HasColumnName("Record_Date")
+             .HasColumnType("datetime");
+
+            entity.Property(e => e.Referer)
+                .HasColumnName("REFERER")
+                .HasMaxLength(100);
+
+            entity.Property(e => e.UserAgent).HasColumnName("USER_AGENT");
+        });
         OnModelCreatingPartial(modelBuilder);
     }
+
+
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

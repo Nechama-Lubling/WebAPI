@@ -1,6 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using Service;
+using NLog.Web;
+using Microsoft.Extensions.Configuration;
+using API;
+using PresidentsApp.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,14 +22,20 @@ builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IRatingService, RatingService>();
+builder.Services.AddScoped<IRatingRepositorycs, RatingRepositorycs>();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-//builder.Services.AddScoped<IManager214877003Context, Manager214877003Context>();
-builder.Services.AddDbContext<Manager214877003Context>(o => o.UseSqlServer("Server=srv2\\pupils;Database=Manager_214877003;Trusted_Connection=True;TrustServerCertificate=True"));
+builder.Services.AddDbContext<Manager214877003Context>(option => option.UseSqlServer
+(builder.Configuration.GetConnectionString("School")));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Host.UseNLog();
+
+
 
 var app = builder.Build();
 
@@ -47,5 +57,9 @@ app.UseStaticFiles();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseRatingMiddleware();
+
+app.UseErrorHandlingMiddleware();
 
 app.Run();

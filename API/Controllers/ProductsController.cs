@@ -1,4 +1,6 @@
-﻿using Entities;
+﻿using AutoMapper;
+using DTO;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 
@@ -12,58 +14,33 @@ namespace API.Controllers
     {
 
         IProductService _productService;
+        IMapper _mapper;
 
-        public ProductsController(IProductService productService)
+        public ProductsController(IProductService productService,IMapper mapper)
         {
             _productService = productService;
+            _mapper = mapper;
         }
-
 
 
 
 
         // GET: api/<ProductsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public  async Task<ActionResult<IEnumerable<ProductDTO>>> Get( string? desc, int? minPrice,  int? maxPrice, [FromQuery] int?[] categoryIds, int position = 1, int skip = 8)
         {
-            return new string[] { "value1", "value2" };
-
-        }
-
-
-
-        // GET api/<ProductsController>/5
-        [HttpGet("{id}")]
-        public  async Task<ActionResult<IEnumerable<Product>>>  Get(int id)
-        {
-
-
-           List<Product> p = (List<Product>)await _productService.getProductsByCategory(id);
-            if (p.Count() == 0)
+            IEnumerable<Product> products = await _productService.getProducts(position, skip, desc, minPrice, maxPrice, categoryIds);
+            IEnumerable<ProductDTO> productsDTO = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductDTO>>(products);
+            if (productsDTO.Count() == 0)
             {
                 return NoContent();
             }
 
-            return Ok(p);
+            return Ok(productsDTO);
 
         }
 
-        // POST api/<ProductsController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
-        // PUT api/<ProductsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
 
-        // DELETE api/<ProductsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

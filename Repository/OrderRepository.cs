@@ -8,12 +8,8 @@ using System.Threading.Tasks;
 namespace Repository
 {
     public class OrderRepository : IOrderRepository
+
     {
-
-
-
-
-
         private readonly Manager214877003Context _managerContext;
         public OrderRepository(Manager214877003Context managerContext)
         {
@@ -26,6 +22,14 @@ namespace Repository
             await _managerContext.Orders.AddAsync(order);
             await _managerContext.SaveChangesAsync();
             return order;
+
+        }
+
+        public async Task<int> getPrice(OrderItem order)
+        {
+            Product product = _managerContext.Products.Where(item => item.ProductId == order.ProductId).FirstOrDefault();
+            return (int)product.Price;
+
 
         }
 
