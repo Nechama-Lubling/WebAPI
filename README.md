@@ -24,10 +24,12 @@ Welcome to our online car store application—a powerful and flexible solution t
 - **Logging and Error Handling:** Nlog is employed for comprehensive logging, with the added feature of email notifications in case of errors.
   
 - **Middlewares:**  for Rating and error handling .
-  
+
 - **Password Strength:** Security is a top priority. We've implemented the zxcvbn-core library to enforce robust password policies.
   
 - **Swagger Documentation:** To enhance transparency and usability, the application is thoroughly documented using Swagger.
+  
+- **Protection** - the application runs on https
   
 - **Validations:** to check the integrity of the data.
 
