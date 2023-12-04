@@ -10,6 +10,7 @@ namespace API
         public Mapper()
         {
             CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<UserDTO, User>().ReverseMap();
             CreateMap<Order, OrderDTO>().ReverseMap();
             CreateMap<OrderDTO, Order>().ReverseMap();
             CreateMap<OrderItem, OrderItemDTO>().ReverseMap();

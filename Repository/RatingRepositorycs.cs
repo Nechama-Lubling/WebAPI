@@ -9,8 +9,6 @@ namespace Repository
 {
     public class RatingRepositorycs : IRatingRepositorycs
     {
-
-
         private readonly Manager214877003Context _managerContext;
         public RatingRepositorycs(Manager214877003Context managerContext)
         {
@@ -24,8 +22,5 @@ namespace Repository
             return rating;
 
         }
-
-
-
     }
 }

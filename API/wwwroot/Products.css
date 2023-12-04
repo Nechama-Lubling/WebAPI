@@ -54,10 +54,7 @@ p.description {
 .bar::before {
     content: 'Weels';
     color: white;
-    /* display: inline-block; */
     position: absolute;
-    /* margin: 0 auto; */
-    /* display: block; */
     top: 8px;
     left: 51%;
     font-family: Helvetica;

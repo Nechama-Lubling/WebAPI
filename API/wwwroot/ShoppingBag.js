@@ -1,16 +1,6 @@
-
-
-
-//to pass to a diffrent file of js;
-
-
 let cart = JSON.parse(sessionStorage.getItem("cart"));
 let count = JSON.parse(sessionStorage.getItem("count"));
 let user = JSON.parse(sessionStorage.getItem("user"));
-
-
-
-
 async function showProductsInCart() {
     let cart = JSON.parse(sessionStorage.getItem("cart"));
     console.log(cart)
@@ -55,8 +45,6 @@ function sumCart(cart) {
 }
 
 async function placeOrder() {
-
-
     let OrderItems = [];
     for (let i = 0; i < cart.length; i++) {
         let p = cart[i].productId
@@ -94,14 +82,11 @@ async function placeOrder() {
             console.log(error)
         }
     }
-
-
     else {
-        window.location.href = "./home.html"
+        window.location.href = "./login.html"
     }
+
 }
-
-
 
 class OrderItem {
     constructor(productId, quantity) {

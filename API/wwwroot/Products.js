@@ -1,4 +1,7 @@
 ﻿
+var count;
+var cart = [];
+
 const getAllProducts = async (categories, minPrice, maxPrice, description) => {
     if (sessionStorage.getItem("cart")) {
         cart = JSON.parse(sessionStorage.getItem("cart"))
@@ -48,7 +51,6 @@ const getAllProducts = async (categories, minPrice, maxPrice, description) => {
 
 
 const getAllCartegories = async () => {
-
     count = sessionStorage.getItem("count");
     document.getElementById("ItemsCountText").innerHTML = count;
 
@@ -61,7 +63,6 @@ const getAllCartegories = async () => {
         console.log(ex);
     }
 }
-
 
 
 const showCategories = async () => {
@@ -80,8 +81,6 @@ const showCategories = async () => {
 }
 
 
-
-
 const showProducts = async (products) => {
      for (let i = 0; i < products.length; i++) {
         var tmp = document.getElementById("temp-card");
@@ -90,13 +89,10 @@ const showProducts = async (products) => {
         cln.querySelector("h1").innerText = products[i].productName; 
         cln.querySelector(".price").innerText = products[i].price + 'ש"ח';
         cln.querySelector(".description").innerText = products[i].productDescription;
-         cln.querySelector("button").addEventListener("click", () => { addToCart(products[i]) })
-         cln.querySelector("category").value = Categories[i].categoryName;
-
+        cln.querySelector("button").addEventListener("click", () => { addToCart(products[i]) })
         document.getElementById("PoductList").appendChild(cln);
     }
 }
-
 
 
 const filterProducts = async () => {
@@ -115,16 +111,7 @@ const filterProducts = async () => {
 
 }
 
-
-
-
-var count;
-var cart = [];
-
-
-
 const addToCart = async (p) => {
-
     count++;
     document.getElementById("ItemsCountText").innerHTML = count;
     cart.push(p)

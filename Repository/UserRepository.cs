@@ -25,12 +25,21 @@ namespace Repository
             return user;
 
         }
-        public async Task<User> getUser(string userName, string password)
+        public async Task<User?> getUser(string userName, string password)
         {
 
-            User foundUser = await _managerContext.Users.Where(u => u.UserName == userName).FirstOrDefaultAsync();
-            if(foundUser.Password ==password)
+            User ?foundUser = await _managerContext.Users.Where(u => u.UserName == userName).FirstOrDefaultAsync();
+            if (foundUser ==null)
+            {
+                return null;
+            }
+
+            if(foundUser.Password == password)
+            {
+
+           
             return foundUser;
+                }
             return null;
 
         }

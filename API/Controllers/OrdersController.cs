@@ -21,21 +21,7 @@ namespace API.Controllers
             _orderService = orderService;
             _mapper = mapper;
         }   
-        // GET: api/<OrdersController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        // GET api/<OrdersController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST api/<OrdersController>
+   
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] OrderDTO order)
         {

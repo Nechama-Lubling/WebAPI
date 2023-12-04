@@ -3,73 +3,40 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+
+
+    <link href="home.css" rel="stylesheet" />
     <script src="home.js"></script>
 </head>
-<body>
-    <h1>welcome to Home!!!!</h1>
 
 
-
-
+<body dir="rtl">
     <form>
+        <h3>הרשמה</h3>
+        <label for="userName">שם משתמש</label>
 
-        <div dir="rtl">
-            <h3>הרשמה</h3>
-            <br />
+        <input required type="text" id="userName" oninput="validateUsername()">
+        <div id="usernameLabel" class="error-message"></div>
 
-            <label>שם משתמש</label>
-            <br />
-            <input id="userName" onchange="checkLength()" />
-            <br />
+        <label for="email">מייל</label>
+        <input required type="text" id="email" oninput="validateEmail()">
+        <div id="emailLabel" class="error-message"></div>
 
-            <label> מייל</label>
-            <br />
-            <input type="email" id="email" required />
-            <br />
+        <label for="password">סיסמא</label>
+        <input required oninput="validatePassword()" id="password" />
+        <div id="passwordLabel" class="error-message"></div>
 
+        <meter max="4" id="password-strength-meter"></meter>
+        <h8 id="password-strength-text"></h8>
 
-            <label>סיסמא</label>  <br />
-            <input type="password" onchange="checkPassword()" id="password" />
-            <br />
-            <br />
-            <meter max="4" id="password-strength-meter"></meter>
-            <h8 id="password-strength-text"></h8>
-            <br />
-            <label>שם פרטי</label>  <br />
-            <input id="firstName" />
-            <br />
+        <label for="firstName">שם פרטי</label>
+        <input required id="firstName" />
 
-            <label>שם משפחה</label><br />
-            <input id="lastName" />
-            <br />
-            <button type="submit"id="buttonRegister" onclick="register()"> הירשם</button>
-        </div>
+        <label for="lastName">שם משפחה</label>
+        <input required id="lastName" />
+
+        <button type="button" id="buttonRegister" onclick="register()">הירשם</button>
     </form>
-    <br />
-
-
-
-
-
-
-
-    <div dir="rtl">
-        <h3>התחברות</h3>
-        <br />
-
-        <label>שם משתמש</label>  <br />
-        <input id="userNameLogin" />
-        <br />
-
-        <label>סיסמא</label>  <br />
-        <input type="password" id="passwordLogin"  />
-        <br />
-        <button id="login" onclick="login()" > התחבר</button>
-    </div>
-
-    <a href="Products.html">Products.html</a>
-
-
 
 </body>
 

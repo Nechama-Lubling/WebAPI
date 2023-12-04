@@ -1,0 +1,30 @@
+﻿
+
+h1 {
+    color: lightseagreen;
+    text-align: center;
+    font-size: 40px;
+    font-family:Gisha;
+    transition: font-size 0.3s ease-in-out;
+}
+
+.store {
+    margin-left: 44%;
+    background-color: black;
+    color: white;
+    padding: 12px 90px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    display: inline-block;
+}
+
+
+    .store:hover {
+        background-color: #2980b9;
+    }
+
+    .store.rotate {
+        animation: rotateButton 0.5s linear;
+    }

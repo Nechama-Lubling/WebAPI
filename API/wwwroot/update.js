@@ -1,49 +1,74 @@
-﻿var IdCount = 100;
+﻿const user = sessionStorage.getItem("user")
+const jsonUser = JSON.parse(user)
+
+const loadPage = () => {
+    if (!user) {
+        window.location.href = "./login.html"
+    }
+
+    const jsonUser = JSON.parse(user)
+    welcome.innerHTML = ` שלום  ${jsonUser.userName}  `
+    const userNameUpdate = document.getElementById("userNameUpdate")
+    userNameUpdate.value = jsonUser.userName
+
+    const emailUpdate = document.getElementById("emailUpdate")
+    emailUpdate.value = jsonUser.email
 
 
+    const passwordUpdate = document.getElementById("passwordUpdate")
+    passwordUpdate.value = jsonUser.password
 
+    const firstNameUpdate = document.getElementById("firstNameUpdate")
+    firstNameUpdate.value = jsonUser.firstName
 
-const register = async () => {
+    const lastNameUpdate = document.getElementById("lastNameUpdate")
+    lastNameUpdate.value = jsonUser.lastName
+
+}
+
+const update = async () => {
+
     clearErrorMessages();
 
     if (!validateUsername() || !validateEmail() || !validatePassword()) {
         return;
     }
 
-    var registerButton = document.getElementById("buttonRegister");
-    registerButton.classList.add("rotate");
-
     try {
-        var email = document.getElementById("email").value
-        var userName = document.getElementById("userName").value
-        var password = document.getElementById("password").value
-        var firstName = document.getElementById("firstName").value
-        var lastName = document.getElementById("lastName").value
-        var User = {email, userName, password, firstName, lastName }
-
-        const res = await fetch('api/users', {
-            method: 'POST',
+        var userId = jsonUser.userId
+        var email = document.getElementById("emailUpdate").value
+        var userName = document.getElementById("userNameUpdate").value
+        var password = document.getElementById("passwordUpdate").value
+        var firstName = document.getElementById("firstNameUpdate").value
+        var lastName = document.getElementById("lastNameUpdate").value
+        var User = { userId, email, firstName, lastName, password ,userName}
+        console.log(User)
+        var url = 'api/users' + "/" + userId
+        const res = await fetch(url, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(User)
+
         });
-
         const dataPost = await res.json();
-        alert(dataPost.userName + " your registration is successful:)")
-        window.location.href = "./login.html"
+
+        alert(dataPost.userName +"עודכן")
+        window.location.href = "./Products.html"
     }
 
-
-    catch (er) {
-        alert(er)
-    }
+catch (er) {
+    alert(er.message+ "ERORR")
 }
 
-function clearErrorMessages() {
-    var emailInput = document.getElementById("email");
+}
 
-    var usernameInput = document.getElementById("userName");
+
+
+function clearErrorMessages() {
+    var emailInput = document.getElementById("emailUpdate");
+    var usernameInput = document.getElementById("userNameUpdate");
     document.getElementById("usernameLabel").textContent = "";
     document.getElementById("emailLabel").textContent = "";
     document.getElementById("passwordLabel").textContent = "";
@@ -55,8 +80,8 @@ function clearErrorMessages() {
 
 
 function validateUsername() {
-   
-    var usernameInput = document.getElementById("userName");
+
+    var usernameInput = document.getElementById("userNameUpdate");
     var usernameLabel = document.getElementById("usernameLabel");
     var username = usernameInput.value;
 
@@ -73,7 +98,7 @@ function validateUsername() {
 
 
 function validateEmail() {
-    var emailInput = document.getElementById("email");
+    var emailInput = document.getElementById("emailUpdate");
     var emailLabel = document.getElementById("emailLabel");
     var email = emailInput.value;
 
@@ -91,8 +116,7 @@ function validateEmail() {
 }
 
 
-var user;
-async function validatePassword() { 
+async function validatePassword() {
 
 
 
@@ -105,12 +129,11 @@ async function validatePassword() {
         4: "Strong"
     }
 
-    var passwordInput = document.getElementById("password");
+    var passwordInput = document.getElementById("passwordUpdate");
     var passwordLabel = document.getElementById("passwordLabel");
-    var password = document.getElementById("password").value;
+    var password = document.getElementById("passwordUpdate").value;
     var meter = document.getElementById('password-strength-meter');
     var text = document.getElementById('password-strength-text');
-
     try {
         await fetch('api/Users/check',
             {
@@ -139,8 +162,7 @@ async function validatePassword() {
             if (password !== "") {
                 text.innerHTML = "Strength: " + strength[res];
 
-            }
-            else {
+            } else {
 
                 text.innerHTML = "";
             }
@@ -151,9 +173,10 @@ async function validatePassword() {
     }
     catch (e) {
         alert(e)
-        return false;
     }
-   
 }
 
+const goToStore = async () => {
+    window.location.href = "./Products.html"
+}
 

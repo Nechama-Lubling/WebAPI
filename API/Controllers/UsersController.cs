@@ -32,29 +32,35 @@ namespace API.Controllers
             _logger = logger;
 
         }
+
         // GET api/<ValuesController>
         [HttpGet]
-        public async Task<ActionResult<User>> Get(
+        public async Task<ActionResult<UserDTO>> Get(
             [FromQuery] string userName="", [FromQuery] string password="")
         {
+            User findUser = await _userService.getUser(userName, password);
 
-            UserDTO userAgsist = _mapper.Map<User, UserDTO>(await _userService.getUser(userName, password)); 
-
-            if(userAgsist ==null)
+            if(findUser == null)
             {
-                return  NotFound();
+               return  NotFound();
             }
 
+            UserDTO userAgsist = _mapper.Map<User, UserDTO>(findUser);      
             _logger.LogInformation("Login attempt with userName, {0} and password {1}", userName, password);
             return  Ok(userAgsist);
 
         }
 
+
+
+
+
         // POST api/<ValuesController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] User user)
+        public async Task<IActionResult> Post([FromBody] UserDTO userDTO)
         {
 
+            User user = _mapper.Map<UserDTO,User>(userDTO);
             User newUser =await _userService.addUser(user);
             if (newUser == null)
             {
@@ -64,6 +70,9 @@ namespace API.Controllers
             return  CreatedAtAction(nameof(Get), new { id = newUser.UserId }, newUser);
 
         }
+
+
+
 
         [HttpPost("check")]
         public async Task<int> Check([FromBody] string password)
@@ -76,11 +85,15 @@ namespace API.Controllers
             return  -1;
 
         }
+
+
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] User userToUpdate)
+        public async Task<ActionResult> Put(int id, [FromBody] UserDTO userToUpdateDTO)
         {
-           
+
+            User userToUpdate = _mapper.Map<UserDTO, User>(userToUpdateDTO);
+
             User newUser = await _userService.editUser(userToUpdate);
             if (newUser != null)
             {
