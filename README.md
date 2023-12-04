@@ -29,7 +29,7 @@ Welcome to our online car store application—a powerful and flexible solution t
   
 - **Swagger Documentation:** To enhance transparency and usability, the application is thoroughly documented using Swagger.
   
-- **Protection** - the application runs on https
+- **Protection** - the application runs on https protocol.
   
 - **Validations:** to check the integrity of the data.
 
