@@ -77,6 +77,6 @@ For any question you can write to me:
 nechamalubling@gmail.com
 
 ## Authors
-Nechama Lubling
+Nechama Lubling and
 Rut Bresloyer
    
