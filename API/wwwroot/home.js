@@ -81,7 +81,7 @@ function validateEmail() {
 
     if (!emailRegex.test(email)) {
         emailInput.classList.add("invalid-input");
-        emailLabel.textContent = "כתובת מייל לא חוקית";
+        emailLabel.textContent = "כתובת מייל לא חוקית"; 
         return false;
     } else {
         emailLabel.textContent = "";
