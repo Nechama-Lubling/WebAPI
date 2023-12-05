@@ -63,7 +63,7 @@ Add-migration MyDataBase
 Update-Database
 
 ```
-3.Insert data into database: from dataQuery file in project.
+3.Insert data into database: from dataQuery file in the project.
 ```
 insert...
 
