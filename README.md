@@ -63,7 +63,7 @@ Add-migration MyDataBase
 Update-Database
 
 ```
-3.Insert data into database: from API/wwwroot/dataQuery.txt file.
+3.Insert data into database: from dataQuery file in project.
 ```
 insert...
 
