@@ -1,0 +1,70 @@
+USE [Manager_214877003]
+GO
+SET IDENTITY_INSERT [dbo].[CATEGORIES] ON 
+GO
+INSERT [dbo].[CATEGORIES] ([CATEGORY_ID], [CATEGORY_NAME], [IMG]) VALUES (2, N'קטנות', N'2.png                                                                                               ')
+GO
+INSERT [dbo].[CATEGORIES] ([CATEGORY_ID], [CATEGORY_NAME], [IMG]) VALUES (3, N'משפחתיות', N'3.png                                                                                               ')
+GO
+INSERT [dbo].[CATEGORIES] ([CATEGORY_ID], [CATEGORY_NAME], [IMG]) VALUES (4, N'יוקרה', N'4.png                                                                                               ')
+GO
+INSERT [dbo].[CATEGORIES] ([CATEGORY_ID], [CATEGORY_NAME], [IMG]) VALUES (5, N'מנהלים', N'5.png                                                                                               ')
+GO
+INSERT [dbo].[CATEGORIES] ([CATEGORY_ID], [CATEGORY_NAME], [IMG]) VALUES (6, N'שטח', N'6.jpg                                                                                               ')
+GO
+INSERT [dbo].[CATEGORIES] ([CATEGORY_ID], [CATEGORY_NAME], [IMG]) VALUES (7, N'מסחרי', N'7.png                                                                                               ')
+GO
+INSERT [dbo].[CATEGORIES] ([CATEGORY_ID], [CATEGORY_NAME], [IMG]) VALUES (8, N'מיניואן', N'8.png                                                                                               ')
+GO
+INSERT [dbo].[CATEGORIES] ([CATEGORY_ID], [CATEGORY_NAME], [IMG]) VALUES (9, N'ספורט', N'9.png                                                                                               ')
+GO
+SET IDENTITY_INSERT [dbo].[CATEGORIES] OFF
+GO
+SET IDENTITY_INSERT [dbo].[PRODUCTS] ON 
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (100, N'פיאט 500', 300000.0000, 2, N'פיאט 2021 מהירה ומשוכללת', N'Fiat-500e-2021-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (101, N'יונדאי ', 400000.0000, 2, N'יונדאי 2021 חזקה', N'Hyundai-i20-2021-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (102, N'מזדה 2', 500000.0000, 2, N'מזדה 2020 יפה במיוחד', N'Mazda-2-2020-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (104, N'שוזוקי איגניס', 250000.0000, 2, N'שוזוקי מגניבה 2020', N'Suzuki-Ignis-2020-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (105, N'טיוטה יאריס', 300000.0000, 2, N'טיוטה 5 מקומות 2020  ', N'Toyota-Yaris-2020-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (106, N'סקודה פאביה', 600000.0000, 3, N'7 מקומות נוחה ומרווחת ', N'Skoda-Fabia-2022-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (107, N'שוזוקי סויפט', 720000.0000, 3, N'8 מקומות יפה מבריקה מהירה ושקטה', N'Suzuki-Swift-2020-Out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (108, N'האודי 8', 900000.0000, 4, N'מרשימה 2022 מתאימה לגבירים וראשי ממשלה', N'Audi-A8-SWB-2022-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (109, N'B.M.W', 1000000.0000, 4, N'קסומה 2021 מתאימה לנשיאים בלבד', N'BMW-5-Series-2021-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (110, N'גנסיס', 8000000.0000, 4, N'מ- 2021 חלומית יוקרתית שקטה ומהירה מתאימה להייטקיסטים ', N'Genesis-G80-2021-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (111, N'מסרטי', 1200000.0000, 4, N'מ-2024 הכי יפה בעולם מתאימה לעשירי תבל', N'Maserati-Ghibli-2022-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (112, N'מרצדס', 920000.0000, 4, N'מ-2023 כסופה ומפוארת ', N'מרצדס-CLS-2018-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (113, N'היונדי', 800000.0000, 5, N'מ-2023 מתאים למנהל קשוח 6 מקומות', N'Hyundai-Ioniq-6-Out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (114, N'היונדי סונטה', 8300000.0000, 5, N'מ-2024 דגם חדיש ומפואר מהיר ויפיפה', N'Hyundai-Sonata-Hybrid-2020-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (115, N'מאזדה סאדן', 7200000.0000, 5, N'מ-2022 דגם מפואר חדיש ומהיר', N'מאזדה-6-סדאן-2019-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (116, N'קיה ספורטאג', 6000000.0000, 6, N'רכב שטח מ- 2023 מהיר ועוצמתי', N'Kia-Sportage-2022-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (117, N'קיה סטוניק', 2500000.0000, 6, N'מ-2020 מהירה 7 מקומות ', N'Kia-Stonic-2020-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (118, N'פגוט', 3400000.0000, 6, N'פגוט 2021 חדישה ומפוארת חזקה לכל שטח', N'Peugeot-3008-2021-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (119, N'טסלה y', 400000.0000, 6, N'טסלה2022 רכב חשמלי יוקרתי 5 מקומות', N'Tesla-Model-Y-2022-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (120, N'איסוזו max', 2300000.0000, 7, N'איזוזו מתאימה לפועלים חזקה גיבורה 7  מקומות2021 ', N'Isuzu-D-Max-2021-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (121, N'וולצפוגן קארואלה', 5000000.0000, 7, N'2020 מסחרית ויפה סטילמעוצב 12 מקומות מתאים לנהגים חזקים', N'Volkswagen-Caravelle-2020-out001.jpg')
+GO
+INSERT [dbo].[PRODUCTS] ([PRODUCT_ID], [PRODUCT_NAME], [PRICE], [CATEGORY_ID], [PRODUCT_DESCRIPTION], [IMG]) VALUES (122, N'אופל קומבו ליף', 3600000.0000, 7, N'אופל2020 גדול ומפואר 8 מקומות מהירה מ-2030 נחמדה לסביבה', N'אופל-קומבו-לייף-2020-out001.jpg')
+GO
+SET IDENTITY_INSERT [dbo].[PRODUCTS] OFF
+GO
